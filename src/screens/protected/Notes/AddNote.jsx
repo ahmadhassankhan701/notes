@@ -46,6 +46,7 @@ const AddNote = () => {
 		}
 		try {
 			setLoading(true);
+			// Random id for each note
 			const newNote = {
 				noteId: getRandomNumbers(),
 				title: detail.title,
@@ -55,10 +56,12 @@ const AddNote = () => {
 			const docRef = doc(db, "Notes", uid);
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
+				// If document exists, update the notes array
 				await updateDoc(docRef, {
 					notes: arrayUnion(newNote),
 				});
 			} else {
+				// If document does not exist, create a new document
 				await setDoc(docRef, {
 					notes: [newNote],
 				});

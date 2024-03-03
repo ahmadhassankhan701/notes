@@ -35,6 +35,7 @@ const Login = ({ navigation }) => {
 		}
 		try {
 			setLoading(true);
+			// Sign in user with email and password
 			const userCredential = await signInWithEmailAndPassword(
 				auth,
 				details.email,
@@ -53,6 +54,7 @@ const Login = ({ navigation }) => {
 			email: users.email,
 			name: users.displayName,
 		};
+		// Save user data to local storage and update context state
 		const stateData = { user };
 		setState({
 			user: stateData.user,

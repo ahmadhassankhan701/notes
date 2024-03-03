@@ -16,6 +16,7 @@ const DarkTheme = {
 	colors: DarkScheme,
 };
 export default function AppRoute() {
+	// Theme state for user selected theme mode
 	const { state } = useContext(AuthContext);
 	let theme;
 	if (state && state.themeMode) {

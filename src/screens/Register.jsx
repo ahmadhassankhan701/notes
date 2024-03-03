@@ -89,6 +89,7 @@ const Register = ({ navigation }) => {
 		}
 		try {
 			setLoading(true);
+			// Create user with email and password
 			const userCredential = await createUserWithEmailAndPassword(
 				auth,
 				details.email,

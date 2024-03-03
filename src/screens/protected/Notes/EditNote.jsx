@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, TextInput, useTheme } from "react-native-paper";
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../firebase";
 import { AuthContext } from "../../../context/AuthContext";
 const EditNote = ({ navigation, route }) => {
@@ -34,22 +34,6 @@ const EditNote = ({ navigation, route }) => {
 	const handleChange = (name, value) => {
 		setDetail({ ...detail, [name]: value });
 	};
-	const getRandomNumbers = (length = 6) => {
-		const characters =
-			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		let newString;
-
-		while (!newString || newString.length !== length) {
-			newString = "";
-			for (let i = 0; i < length; i++) {
-				newString += characters.charAt(
-					Math.floor(Math.random() * characters.length)
-				);
-			}
-		}
-
-		return newString;
-	};
 	const handleSubmit = async () => {
 		if (detail.title == "" || detail.desc == "") {
 			alert("Please fill all the fields");
@@ -62,6 +46,7 @@ const EditNote = ({ navigation, route }) => {
 			let items = [];
 			if (docSnap.exists()) {
 				const { notes } = docSnap.data();
+				// Update the note in the array
 				notes.map((note) => {
 					if (note.noteId == data.noteId) {
 						note.title = detail.title;
@@ -91,6 +76,7 @@ const EditNote = ({ navigation, route }) => {
 			if (docSnap.exists()) {
 				const { notes } = docSnap.data();
 				notes.map((note) => {
+					// Remove the note from the array
 					if (note.noteId != data.noteId) {
 						items.push(note);
 					}

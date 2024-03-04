@@ -4,6 +4,8 @@ import {
 	Platform,
 	ScrollView,
 	StyleSheet,
+	Text,
+	TouchableOpacity,
 	View,
 } from "react-native";
 import React, { useContext, useState } from "react";
@@ -134,21 +136,26 @@ const AddNote = () => {
 					theme={{ roundness: 0 }}
 				/>
 			</ScrollView>
-			<View style={{ flex: 0.1 }}>
-				<Button
-					mode="contained"
-					buttonColor={colors.primary}
-					textColor={colors.background}
+			<TouchableOpacity
+				style={{
+					flex: 0.1,
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					backgroundColor: colors.primary,
+				}}
+				onPress={handleSubmit}
+			>
+				<Text
 					style={{
-						alignSelf: "center",
-						borderRadius: 0,
-						width: "100%",
+						color: colors.background,
+						fontSize: 20,
+						fontWeight: "bold",
 					}}
-					onPress={handleSubmit}
 				>
 					Add Note
-				</Button>
-			</View>
+				</Text>
+			</TouchableOpacity>
 		</KeyboardAvoidingView>
 	);
 };

@@ -16,7 +16,7 @@ import { AuthContext } from "../context/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Sizes } from "../util/theme";
 const Login = ({ navigation }) => {
-	const { setState } = useContext(AuthContext);
+	const { state, setState } = useContext(AuthContext);
 	const theme = useTheme();
 	const { colors } = theme;
 	const [details, setDetails] = useState({
@@ -57,11 +57,11 @@ const Login = ({ navigation }) => {
 		// Save user data to local storage and update context state
 		const stateData = { user };
 		setState({
+			...state,
 			user: stateData.user,
 		});
 		AsyncStorage.setItem("note_auth", JSON.stringify(stateData));
 		setLoading(false);
-		navigation.navigate("Home");
 	};
 	return (
 		<View

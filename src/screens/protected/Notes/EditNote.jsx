@@ -4,6 +4,8 @@ import {
 	Platform,
 	ScrollView,
 	StyleSheet,
+	Text,
+	TouchableOpacity,
 	View,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
@@ -158,34 +160,46 @@ const EditNote = ({ navigation, route }) => {
 					theme={{ roundness: 0 }}
 				/>
 			</ScrollView>
-			<View style={{ flex: 0.2 }}>
-				<Button
-					mode="contained"
-					buttonColor={colors.primary}
-					textColor={colors.background}
+			<TouchableOpacity
+				style={{
+					flex: 0.1,
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					backgroundColor: colors.primary,
+				}}
+				onPress={handleSubmit}
+			>
+				<Text
 					style={{
-						alignSelf: "center",
-						borderRadius: 0,
-						width: "100%",
+						color: colors.background,
+						fontSize: 20,
+						fontWeight: "bold",
 					}}
-					onPress={handleSubmit}
 				>
 					Update Note
-				</Button>
-				<Button
-					mode="contained"
-					buttonColor={colors.error}
-					textColor={colors.background}
+				</Text>
+			</TouchableOpacity>
+			<TouchableOpacity
+				style={{
+					flex: 0.1,
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					backgroundColor: colors.error,
+				}}
+				onPress={handleDelete}
+			>
+				<Text
 					style={{
-						alignSelf: "center",
-						borderRadius: 0,
-						width: "100%",
+						color: colors.background,
+						fontSize: 20,
+						fontWeight: "bold",
 					}}
-					onPress={handleDelete}
 				>
 					Delete Note
-				</Button>
-			</View>
+				</Text>
+			</TouchableOpacity>
 		</KeyboardAvoidingView>
 	);
 };

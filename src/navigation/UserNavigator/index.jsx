@@ -52,9 +52,9 @@ const index = () => {
 							<>
 								<MaterialIcons name="light-mode" size={24} color="white" />
 								<Switch
-									value={mode === "light" ? false : true}
+									value={mode == "light" ? false : true}
 									onValueChange={onToggleSwitch}
-									color={theme.colors.title}
+									color={"#000000"}
 								/>
 								<MaterialIcons name="dark-mode" size={24} color="black" />
 							</>
